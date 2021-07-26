@@ -83,3 +83,8 @@ func _process(_delta):
 	else:
 		if is_instance_valid(selected_tile):
 			selected_tile.global_position = Vector2(stepify(get_global_mouse_position().x,64)-64,stepify(get_global_mouse_position().y,64)-64)
+			if Input.is_mouse_button_pressed(BUTTON_LEFT):
+				$HUD/TileInformation.show()
+				$HUD/TileInformation.update_data(Globals.get_terrain_tile_by_id(find_parent('World').find_node('Ground').get_cellv(find_parent('World').find_node('Ground').world_to_map(selected_tile.global_position))))
+			elif Input.is_mouse_button_pressed(BUTTON_RIGHT):
+				$HUD/TileInformation.hide()

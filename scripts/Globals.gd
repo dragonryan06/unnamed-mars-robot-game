@@ -74,3 +74,4 @@ func get_terrain_tile_by_id(id:int):
 	for tile in terrain_tiles.values():
 		if tile['id'] == id:
 			return tile
+	return str(id) + ' is not a valid id, something went wrong'
