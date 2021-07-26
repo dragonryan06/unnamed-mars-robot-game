@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/miner.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/smelter.png" type="Texture" id=4]
 [ext_resource path="res://assets/depot.png" type="Texture" id=5]
 [ext_resource path="res://assets/funnel.png" type="Texture" id=6]
+[ext_resource path="res://scripts/TileInformation.gd" type="Script" id=7]
 
 [node name="Player" type="Node2D"]
 script = ExtResource( 1 )
@@ -168,6 +169,52 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TileInformation" type="Panel" parent="HUD"]
+visible = false
+margin_top = 448.0
+margin_right = 192.0
+margin_bottom = 600.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HUD/TileInformation"]
+margin_left = 48.0
+margin_top = 8.0
+margin_right = 150.0
+margin_bottom = 22.0
+text = "Tile Information"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HUD/TileInformation"]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 192.0
+margin_bottom = 152.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="HUD/TileInformation/ScrollContainer"]
+margin_right = 160.0
+margin_bottom = 128.0
+
+[node name="Name" type="RichTextLabel" parent="HUD/TileInformation/ScrollContainer/GridContainer"]
+margin_right = 160.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 100, 16 )
+text = "Name: null"
+
+[node name="Description" type="RichTextLabel" parent="HUD/TileInformation/ScrollContainer/GridContainer"]
+margin_top = 20.0
+margin_right = 160.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 160, 108 )
+text = "Description: null null null null null null null null null null null null null null null"
 
 [connection signal="mouse_entered" from="HUD/BuildingMenu" to="HUD/BuildingMenu" method="_on_BuildingMenu_mouse_entered"]
 [connection signal="mouse_exited" from="HUD/BuildingMenu" to="HUD/BuildingMenu" method="_on_BuildingMenu_mouse_exited"]
