@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/StructurePopup.gd" type="Script" id=1]
+
+[node name="StructurePopup" type="Panel"]
+anchor_left = 0.75
+anchor_top = 0.96
+anchor_right = 0.75
+anchor_bottom = 0.96
+margin_left = -64.0001
+margin_top = -320.0
+margin_right = 128.0
+margin_bottom = -64.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="."]
+margin_right = 192.0
+margin_bottom = 40.0
+text = "StructureName"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContentsLabel" type="Label" parent="."]
+margin_left = 24.0
+margin_top = 40.0
+margin_right = 128.0
+margin_bottom = 80.0
+text = "Contents:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 64.0
+margin_top = 72.0
+margin_right = 192.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
