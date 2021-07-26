@@ -3,10 +3,6 @@ extends Node2D
 onready var obstruction_tilemap = find_parent('World').find_node('ObstructedTiles')
 const selected_tile_texture = preload('res://assets/selected_tile_image.png')
 
-const acceleration = 0.5
-const max_speed = 20
-const max_zoom = Vector2(50,50)
-var speed = 0
 onready var placing = null setget set_placing
 var placing_type = null
 var selected_tile
@@ -27,34 +23,7 @@ func set_placing(new_value):
 	else:
 		selected_tile.queue_free()
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_WHEEL_UP:
-			if $Camera2D.zoom - Vector2(1,1) != Vector2(0,0):
-				$Camera2D.zoom -= Vector2(1,1)
-		elif event.button_index == BUTTON_WHEEL_DOWN:
-			if $Camera2D.zoom + Vector2(1,1) != max_zoom:
-				$Camera2D.zoom += Vector2(1,1)
-
 func _process(_delta):
-	if Input.is_action_pressed('ui_right'):
-		if speed < max_speed:
-			speed += acceleration
-		position.x += speed
-	if Input.is_action_pressed('ui_left'):
-		if speed < max_speed:
-			speed += acceleration
-		position.x -= speed
-	if Input.is_action_pressed('ui_up'):
-		if speed < max_speed:
-			speed += acceleration
-		position.y -= speed
-	if Input.is_action_pressed('ui_down'):
-		if speed < max_speed:
-			speed += acceleration
-		position.y += speed
-	if speed > 0:
-		speed -= 0.25
 	if placing == true:
 		$placement.global_position = Vector2(stepify(get_global_mouse_position().x,64),stepify(get_global_mouse_position().y,64))
 		$placement.modulate = Color(255,0,0)
