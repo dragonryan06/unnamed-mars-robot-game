@@ -50,6 +50,8 @@ func _process(_delta):
 				set_placing(false)
 				placing_type = null
 	else:
+		if Input.is_mouse_button_pressed(BUTTON_LEFT):
+			find_parent('World').find_node('Droid').set_goal(Vector2(stepify(get_global_mouse_position().x,64)-32,stepify(get_global_mouse_position().y,64)-32))
 		if is_instance_valid(selected_tile):
 			selected_tile.global_position = Vector2(stepify(get_global_mouse_position().x,64)-64,stepify(get_global_mouse_position().y,64)-64)
 			if Input.is_mouse_button_pressed(BUTTON_LEFT):
